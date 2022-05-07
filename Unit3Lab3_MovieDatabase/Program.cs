@@ -49,28 +49,53 @@ while (runningProgram)
     string allCatPattern = @"\ba\SA*[ll ]";
     if (Regex.IsMatch(userChoice, animatedPattern) || userChoice == "1")
     {
+        List<Movie> tempList = new List<Movie>();
         Console.WriteLine();
         Console.WriteLine("The Animated movies available are:");
         Console.WriteLine();
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
-
         for (int i = 0; i < movies.Count; i++)
         {
             if (movies[i].Category == "Animated")
             {
+                tempList.Add(movies[i]);
+            }
+        }
+        for (int j = 0; j < tempList.Count; j++)
+        {
+            if (j % 2 == 0)
+            {
                 Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,10}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ResetColor();
@@ -84,6 +109,7 @@ while (runningProgram)
     }
     else if (Regex.IsMatch(userChoice, dramaPattern) || userChoice == "2")
     {
+        List<Movie> tempList = new List<Movie>();
         Console.WriteLine();
         Console.WriteLine("The Drama movies available are:");
         Console.WriteLine();
@@ -94,17 +120,42 @@ while (runningProgram)
         {
             if (movies[i].Category == "Drama")
             {
+                tempList.Add(movies[i]);
+            }
+        }
+        for (int j = 0; j < tempList.Count; j++)
+        {
+            if (j % 2 == 0)
+            {
                 Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,10}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ResetColor();
@@ -118,6 +169,7 @@ while (runningProgram)
     }
     else if (Regex.IsMatch(userChoice, horrorPattern) || userChoice == "3")
     {
+        List<Movie> tempList = new List<Movie>();
         Console.WriteLine();
         Console.WriteLine("The Horror movies available are:");
         Console.WriteLine();
@@ -128,17 +180,42 @@ while (runningProgram)
         {
             if (movies[i].Category == "Horror")
             {
+                tempList.Add(movies[i]);
+            }
+        }
+        for (int j = 0; j < tempList.Count; j++)
+        {
+            if (j % 2 == 0)
+            {
                 Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,10}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ResetColor();
@@ -152,6 +229,7 @@ while (runningProgram)
     }
     else if (Regex.IsMatch(userChoice, sciFiPattern) || userChoice == "4")
     {
+        List<Movie> tempList = new List<Movie>();
         Console.WriteLine();
         Console.WriteLine("The Sci-Fi movies available are:");
         Console.WriteLine();
@@ -162,17 +240,42 @@ while (runningProgram)
         {
             if (movies[i].Category == "Sci-Fi")
             {
+                tempList.Add(movies[i]);
+            }
+        }
+        for (int j = 0; j < tempList.Count; j++)
+        {
+            if (j % 2 == 0)
+            {
                 Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,10}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,30}", tempList[j].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,13}", tempList[j].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,33}", tempList[j].YearReleased.ToString("dddd, MMMM dd, yyyy")));
                 Console.ResetColor();
                 Console.Write(String.Format("{0,2}", "|"));
                 Console.ResetColor();
