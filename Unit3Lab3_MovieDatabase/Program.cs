@@ -18,7 +18,10 @@ movies.Add(new Movie("The Conjuring", "Horror", 112, new DateTime(2021, 06, 04))
 movies.Add(new Movie("Venom", "Sci-Fi", 140, new DateTime(2021, 10, 01)));
 movies.Add(new Movie("The Matrix", "Sci-Fi", 136, new DateTime(1999, 03, 31)));
 movies.Add(new Movie("The Meg", "Sci-Fi", 113, new DateTime(2018, 08, 10)));
-movies.OrderBy(x => x.Title);
+movies.Sort(delegate (Movie x, Movie y) 
+{
+    return x.Title.CompareTo(y.Title);
+});
 
 bool runningProgram = true;
 
@@ -34,6 +37,7 @@ while (runningProgram)
     Console.WriteLine("\t2. Drama");
     Console.WriteLine("\t3. Horror");
     Console.WriteLine("\t4. Sci-Fi");
+    Console.WriteLine("\t5. All Categories");
     Console.WriteLine();
     Console.Write("Your Category Choice: ");
     string userChoice = Console.ReadLine().ToLower();
@@ -42,23 +46,39 @@ while (runningProgram)
     string dramaPattern = @"\bd\SD*[ra]";
     string horrorPattern = @"\bh\SH*[or]";
     string sciFiPattern = @"\bs\Ss*[ci-]";
+    string allCatPattern = @"\ba\SA*[ll ]";
     if (Regex.IsMatch(userChoice, animatedPattern) || userChoice == "1")
     {
         Console.WriteLine();
         Console.WriteLine("The Animated movies available are:");
         Console.WriteLine();
-        Console.WriteLine(String.Format("{0,0}{1,26}{2,30}{3,22}", "", "Title", "Run Time (Minutes)", "Release Date"));
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
 
         for (int i = 0; i < movies.Count; i++)
         {
             if (movies[i].Category == "Animated")
             {
+                Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(String.Format("{0,0}{1,33}{2,14}{3,41}", "", movies[i].Title, movies[i].RunTimeInMinutes,movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
             }
         }
         Console.ResetColor();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         PauseAndClearScreen();
         runningProgram = WannaRestart();
     }
@@ -67,17 +87,32 @@ while (runningProgram)
         Console.WriteLine();
         Console.WriteLine("The Drama movies available are:");
         Console.WriteLine();
-        Console.WriteLine(String.Format("{0,0}{1,26}{2,30}{3,22}", "", "Title", "Run Time (Minutes)", "Release Date"));
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         for (int i = 0; i < movies.Count; i++)
         {
             if (movies[i].Category == "Drama")
             {
+                Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(String.Format("{0,0}{1,33}{2,14}{3,41}", "", movies[i].Title, movies[i].RunTimeInMinutes, movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
             }
         }
         Console.ResetColor();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         PauseAndClearScreen();
         runningProgram = WannaRestart();
     }
@@ -86,17 +121,32 @@ while (runningProgram)
         Console.WriteLine();
         Console.WriteLine("The Horror movies available are:");
         Console.WriteLine();
-        Console.WriteLine(String.Format("{0,0}{1,26}{2,30}{3,22}", "", "Title", "Run Time (Minutes)", "Release Date"));
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         for (int i = 0; i < movies.Count; i++)
         {
             if (movies[i].Category == "Horror")
             {
+                Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(String.Format("{0,0}{1,33}{2,14}{3,41}", "", movies[i].Title, movies[i].RunTimeInMinutes, movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
             }
         }
         Console.ResetColor();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         PauseAndClearScreen();
         runningProgram = WannaRestart();
     }
@@ -105,17 +155,85 @@ while (runningProgram)
         Console.WriteLine();
         Console.WriteLine("The Sci-Fi movies available are:");
         Console.WriteLine();
-        Console.WriteLine(String.Format("{0,0}{1,26}{2,30}{3,22}", "", "Title", "Run Time (Minutes)", "Release Date"));
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
         Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         for (int i = 0; i < movies.Count; i++)
         {
             if (movies[i].Category == "Sci-Fi")
             {
+                Console.Write(String.Format("{0,3}", "|"));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(String.Format("{0,0}{1,33}{2,14}{3,41}", "", movies[i].Title, movies[i].RunTimeInMinutes, movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
             }
         }
         Console.ResetColor();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        PauseAndClearScreen();
+        runningProgram = WannaRestart();
+    }
+    else if(Regex.IsMatch(userChoice, allCatPattern) || userChoice == "5")
+    {
+        Console.WriteLine();
+        Console.WriteLine("All of the movies available in this database are:");
+        Console.WriteLine();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        Console.WriteLine(String.Format("{0,3}{1,17}{2,15}{3,20}{4,3}{5,23}{6,12}", "|", "Title", "|", "Run Time (Minutes)", "|", "Release Date", "|"));
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
+        for (int i = 0; i < movies.Count; i++)
+        {
+            if (i%2==0)
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+
+            }
+            else
+            {
+                Console.Write(String.Format("{0,3}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,30}", movies[i].Title));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,13}", movies[i].RunTimeInMinutes));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,10}", "|"));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(String.Format("{0,33}", movies[i].YearReleased.ToString("dddd, MMMM dd, yyyy")));
+                Console.ResetColor();
+                Console.Write(String.Format("{0,2}", "|"));
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+        }
+        Console.ResetColor();
+        Console.WriteLine(String.Format("{0,2}{1,0}", "", "-------------------------------------------------------------------------------------------"));
         PauseAndClearScreen();
         runningProgram = WannaRestart();
     }
